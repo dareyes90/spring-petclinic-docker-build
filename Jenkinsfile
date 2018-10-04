@@ -23,7 +23,7 @@ pipeline {
         container('docker'){
           withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
             sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-            sh 'docker push jefferyfry/spring-petclinic:latest'
+            sh 'docker push deivy90/firstdockerrepo:latest'
           }
         }
       }
