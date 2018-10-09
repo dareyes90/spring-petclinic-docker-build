@@ -10,6 +10,11 @@ pipeline {
   }
   stages {
     stage('Docker Build') {
+		steps {
+        container('maven') {
+          sh 'mvn clean install'
+        }
+      }
       steps {
         container('docker'){
 			script {
