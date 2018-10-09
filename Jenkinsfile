@@ -1,4 +1,3 @@
-
 pipeline {
   environment {
     registry = "deivy90/firstdockerrepo"
@@ -9,14 +8,16 @@ pipeline {
     label 'maven-docker'
   }
   stages {
-    stage('Docker Build') {
+	stage ('Build project'){
 		steps {
-        container('maven') {
+		container('maven') {
           sh 'mvn clean install'
         }
-      }
+	  }
+	}
+	stage('Docker Build') {
       steps {
-        container('docker'){
+		container('docker'){
 			script {
 				dockerImage = docker build -t registry + ":$BUILD_NUMBER"
 			}
