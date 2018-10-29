@@ -11,7 +11,7 @@ pipeline {
 	stage ('Build project'){
 		steps {
 		container('maven') {
-          sh 'mvn -version'
+          sh 'mvn -version && ls -la'
           sh 'mvn clean install'
         }
 	  }
@@ -20,6 +20,7 @@ pipeline {
       steps {
 		container('docker'){
 			script {
+                                sh 'ls -la'
 				dockerImage = docker build -t registry + ":$BUILD_NUMBER"
 			}
         }
