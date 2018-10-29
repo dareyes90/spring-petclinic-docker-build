@@ -11,6 +11,7 @@ pipeline {
 	stage ('Build project'){
 		steps {
 		container('maven') {
+          sh 'mvn -version'
           sh 'mvn clean install'
         }
 	  }
