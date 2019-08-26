@@ -1,21 +1,21 @@
-pipeline {
+pipeline {/*
   environment {
     registry = "deivy90/firstdockerrepo"
     registryCredential = 'dockerhub'
 	dockerImage = ''
-  }
+  }*/
   agent {
     label 'maven-docker'
   }
   stages {
 	stage ('Build project'){
 		steps {
-		container('maven') {
+		//container('maven') {
           sh 'mvn -version && ls -la'
           sh 'mvn clean install'
-        }
+        //}
 	  }
-	}
+	}/*
 	stage('Docker Build') {
       steps {
 		container('docker'){
@@ -34,6 +34,6 @@ pipeline {
 			}
 		}
       }
-    }
+    }*/
   }
 }
