@@ -15,7 +15,14 @@ pipeline {/*
           sh 'mvn clean install'
         //}
 	  }
-	}/*
+	}
+  stage ('Sonar Analysis'){
+		steps {
+          sh 'sonar-scanner'
+	  }
+	}
+
+  /*
 	stage('Docker Build') {
       steps {
 		container('docker'){
