@@ -4,11 +4,12 @@ pipeline {/*
     registryCredential = 'dockerhub'
 	dockerImage = ''
   }*/
-  agent {
-    label 'maven-docker'
-  }
+  agent none
   stages {
 	stage ('Build project'){
+    agent {
+      label 'maven-docker'
+    }
 		steps {
 		//container('maven') {
           sh 'mvn -version && ls -la'
@@ -16,10 +17,10 @@ pipeline {/*
         //}
 	  }
 	}
-  agent {
-    label 'general-docker'
-  }
   stage ('Sonar Analysis'){
+    agent {
+      label 'general-docker'
+    }
 		steps {
           sh 'sonar-scanner'
 	  }
