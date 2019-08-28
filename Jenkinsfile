@@ -16,6 +16,9 @@ pipeline {/*
         //}
 	  }
 	}
+  agent {
+    label 'general-docker'
+  }
   stage ('Sonar Analysis'){
 		steps {
           sh 'sonar-scanner'
